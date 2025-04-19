@@ -19,11 +19,11 @@ data = {
 }
 
 response = requests.post(url, headers=headers, data=data)
-
-soup = BeautifulSoup(response.text, "html.parser")
-
-
-
-# Example: find all schedule blocks
-for event in soup.find_all("div", class_="calendar-class"):
-    print(event.text.strip())
+soup = BeautifulSoup(response.text, "lxml")
+block_rows = soup.find_all("div", class_ = "block row_1")
+for block_row in block_rows:
+    location_class_time = block_row.div.h3.a.text
+    #department = block_row.div.
+    if "SRC" not in location_class_time:
+        location = location_class_time.split('|')[1].strip()
+        print(location)
