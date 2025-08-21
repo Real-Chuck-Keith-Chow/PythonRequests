@@ -27,3 +27,8 @@ for block_row in block_rows:
     if "SRC" not in location_class_time:
         location = location_class_time.split('|')[1].strip()
         print(location)
+"""# Extract the TIME
+    time_span = block_row.find("span", class_="time")
+    time = time_span.text.strip() if time_span else "N/A"
+    #just for testing purposes check locations plus instructor according to this format!
+"""
